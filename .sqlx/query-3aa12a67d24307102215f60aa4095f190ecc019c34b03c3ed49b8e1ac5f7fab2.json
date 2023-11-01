@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE user\n        SET last_call = $1\n        WHERE user_id = $2\n        RETURNING user_id",
+  "describe": {
+    "columns": [
+      {
+        "name": "user_id",
+        "ordinal": 0,
+        "type_info": "Text"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "3aa12a67d24307102215f60aa4095f190ecc019c34b03c3ed49b8e1ac5f7fab2"
+}

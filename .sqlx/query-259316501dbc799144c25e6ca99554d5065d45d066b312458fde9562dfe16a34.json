@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT last_call FROM user WHERE user_id = 'test_id'",
+  "describe": {
+    "columns": [
+      {
+        "name": "last_call",
+        "ordinal": 0,
+        "type_info": "Int64"
+      }
+    ],
+    "parameters": {
+      "Right": 0
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "259316501dbc799144c25e6ca99554d5065d45d066b312458fde9562dfe16a34"
+}
