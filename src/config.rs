@@ -1,0 +1,2 @@
+pub static CHECK_INTERVAL_MINUTES: i64 = 30;
+pub static NOTIFY_DELAY_MINUTES: i64 = 24 * 60;

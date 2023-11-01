@@ -47,7 +47,7 @@ runserver-tokio:
 
 # run development server without Tokio settings
 runserver:
-    cargo watch -x "run" -w src --why
+    RUST_LOG=debug cargo watch -x "run" -w src --why
 
 check:
     cargo check
@@ -61,3 +61,12 @@ test test_name="" :
 
 test-coverage-report:
     cargo tarpaulin
+
+build-release:
+    cargo build --release
+
+release-docker:
+    rm -rf target; docker build -t deadman:v1.0  .
+
+run-docker:
+    docker run -e DATABASE_URL="sqlite:///data/deadman.sqlite" -e TELOXIDE_TOKEN="6717277222:AAFA_8FeBkcP5DaZReY4_F-dnPAHmlShK4I" --volume "./data:/data" deadman:v1.0

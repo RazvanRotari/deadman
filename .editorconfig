@@ -1,0 +1,30 @@
+# top-most EditorConfig file
+root = true
+
+# Unix-style newlines with a newline ending every file
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# 4 space indentation for rust files
+[*.rs]
+indent_style = space
+indent_size = 4
+
+# 4 space indentation for sql files
+[*.sql]
+indent_style = space
+indent_size = 4
+
+[justfile]
+indent_style = space
+indent_size = 4
+
+# tab indentation for cfg files
+[*.cfg]
+indent_style = tab
+indent_size = 4
+
+[*.yml]
+indent_style = space
+indent_size = 2
