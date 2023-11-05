@@ -24,7 +24,9 @@ SELECT
 FROM
 	user
 WHERE
-	(last_call + interval_minutes * 60 ) < CAST(strftime('%s', 'now') as INTEGER)"#
+	(last_call + interval_minutes * 60 ) < CAST(strftime('%s', 'now') as INTEGER)
+    AND last_notification IS NULL
+    "#
     )
     .fetch_all(&pool)
     .await?;
@@ -42,6 +44,16 @@ WHERE
                 ),
             )
             .await?;
+        let _ = sqlx::query!(
+            r#" 
+            UPDATE user
+            SET last_notification = CAST(strftime('%s', 'now') as INTEGER)
+            WHERE user_id = $1
+        "#,
+            user.user_id
+        )
+        .execute(&pool)
+        .await?;
     }
     Ok(())
 }

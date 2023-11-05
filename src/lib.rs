@@ -64,7 +64,8 @@ async fn not_dead(
     let now = Utc::now().timestamp();
     let ret = sqlx::query!(
         r#"UPDATE user
-        SET last_call = $1
+        SET last_call = $1,
+        last_notification = NULL
         WHERE user_id = $2
         RETURNING user_id"#,
         now,

@@ -66,7 +66,7 @@ build-release:
     cargo build --release
 
 release-docker:
-    rm -rf target; docker build -t deadman:v1.0  .
+    just db-fresh; rm -rf target; docker build -t deadman:v1.0  .
 
 run-docker:
     docker run -e DATABASE_URL="sqlite:///data/deadman.sqlite" -e TELOXIDE_TOKEN="6717277222:AAFA_8FeBkcP5DaZReY4_F-dnPAHmlShK4I" --volume "./data:/data" deadman:v1.0
