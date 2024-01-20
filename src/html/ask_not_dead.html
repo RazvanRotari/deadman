@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+		<form action="" method="post">
+			<input type="text" id="id" />
+			<input type="submit" value="Send"/>
+		</form>
+
+</body>
+<script>
+function getParameterByName(name) {
+    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+}
+window.onload = function() {
+	var id = getParameterByName("id");
+	if (id) {
+		var input = document.getElementById("id");
+		input.value = id;
+	}
+};
+
+</script>
+
+</html>

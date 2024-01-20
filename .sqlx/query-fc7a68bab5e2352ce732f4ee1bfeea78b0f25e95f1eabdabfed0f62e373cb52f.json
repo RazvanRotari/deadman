@@ -1,0 +1,12 @@
+{
+  "db_name": "SQLite",
+  "query": " \n            UPDATE user\n            SET last_notification = CAST(strftime('%s', 'now') as INTEGER)\n            WHERE user_id = $1\n        ",
+  "describe": {
+    "columns": [],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": []
+  },
+  "hash": "fc7a68bab5e2352ce732f4ee1bfeea78b0f25e95f1eabdabfed0f62e373cb52f"
+}

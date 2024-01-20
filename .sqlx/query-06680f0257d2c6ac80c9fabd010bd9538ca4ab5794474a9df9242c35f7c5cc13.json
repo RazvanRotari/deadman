@@ -1,6 +1,6 @@
 {
   "db_name": "SQLite",
-  "query": "UPDATE user\n        SET last_call = $1\n        WHERE user_id = $2\n        RETURNING user_id",
+  "query": "UPDATE user\n        SET last_call = $1,\n        last_notification = NULL\n        WHERE user_id = $2\n        RETURNING user_id",
   "describe": {
     "columns": [
       {
@@ -16,5 +16,5 @@
       false
     ]
   },
-  "hash": "3aa12a67d24307102215f60aa4095f190ecc019c34b03c3ed49b8e1ac5f7fab2"
+  "hash": "06680f0257d2c6ac80c9fabd010bd9538ca4ab5794474a9df9242c35f7c5cc13"
 }

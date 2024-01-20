@@ -6,9 +6,9 @@ use std::net::SocketAddr;
 use axum::{
     extract::{Query, State},
     http::StatusCode,
+    response::Html,
     routing::{get, post},
-    Json,
-    Router,
+    Json, Router,
 };
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
@@ -34,6 +34,7 @@ fn get_router(pool: SqlitePool) -> anyhow::Result<Router> {
         .route("/", get(root))
         // `POST /users` goes to `create_user`
         .route("/not_dead", post(not_dead))
+        .route("/not_dead", get(ask_not_dead))
         .with_state(pool);
     Ok(app)
 }
@@ -54,6 +55,13 @@ pub async fn start_server(pool: SqlitePool) -> anyhow::Result<()> {
 // basic handler that responds with a static string
 async fn root() -> &'static str {
     "Hello, World!"
+}
+async fn ask_not_dead(
+    State(pool): State<SqlitePool>,
+    Query(query): Query<NotDeadParams>,
+) -> (StatusCode, Html<String>) {
+    let html = include_str!("html/ask_not_dead.html");
+    (StatusCode::OK, Html(html.to_string()))
 }
 
 async fn not_dead(
