@@ -15,6 +15,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Install cargo-hack from crates.io
+      uses: baptiste0928/cargo-install@v3
+      with:
+      crate: sqlx-cli
+      version: "^0.7"  # You can specify any semver range
     - uses: actions/checkout@v3
     - name: Build
       run: sqlite3 deadman.sqlite "VACUUM;"; cargo sqlx migrate run --source=./migrations; cargo build --verbose
