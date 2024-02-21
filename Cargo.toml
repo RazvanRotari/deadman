@@ -2,7 +2,7 @@
 name = "deadman"
 version = "0.1.0"
 edition = "2021"
-license = MIT
+license = "MIT"
 description = """
 A deadman switch implemantation that will notify on Telegram if the user has not interacted with it in a specific interval
 """
